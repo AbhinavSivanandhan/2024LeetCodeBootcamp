@@ -1,3 +1,4 @@
+Solution 1(two passes - my solution):
 class Solution(object):
    def sortColors(self, nums):
        """
@@ -17,3 +18,29 @@ class Solution(object):
            else:
                nums[i]=2
               # d[2]-=2 #not needed for our logic
+
+Solution 2(single pass solution, 3 pointer solution ):
+ref: https://www.youtube.com/watch?v=4xbWSRZHqac&ab_channel=NeetCode
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        # Initialize the start, current, and end pointers
+        low = 0
+        high = len(nums) - 1
+        mid = 0
+        # Iterate through the list until the current pointer exceeds the end pointer
+        while mid <= high:
+            if nums[mid] == 0:
+                # If the current element is 0, swap it with the element at the start pointer
+                nums[low], nums[mid] = nums[mid], nums[low]
+                # Move both the start and current pointers one position forward
+                low += 1
+                mid += 1
+            elif nums[mid] == 1:
+                # If the current element is 1, just move the current pointer one position forward
+                mid +=1
+            else:
+                # If the current element is 2, swap it with the element at the end pointer
+                nums[mid], nums[high] = nums[high], nums[mid]
+                # Move the end pointer one position backward
+                high -= 1
+        return nums
