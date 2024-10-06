@@ -1,0 +1,16 @@
+class Solution(object):
+   def productExceptSelf(self, nums):
+       N=len(nums)
+       result=[1]*N
+       pre=1
+       suf=1
+       for i in range(N):
+           pre*=nums[i]
+           if i+1<=N-1:
+               result[i+1]*=pre
+           else:
+               pass
+           suf*=nums[N-1-i]
+           if N-2-i>=0:
+               result[N-2-i]*=suf
+       return result
