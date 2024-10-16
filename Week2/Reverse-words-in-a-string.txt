@@ -1,0 +1,7 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        listform = [x for x in s.split(' ') if x]
+        listform.reverse()
+        result = ' '.join(listform)
+        result = result.strip()
+        return result
